@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block content %}
+  <h1>My Food Diary</h1>
+  <p>Here is what I ate on the following days.</p>
+  {% for id, name in template_recipes.items() %}
+    <p><a href="{{ url_for('recipe', id=id) }}">{{ name }}</a></p>
+  {% endfor %}
+
+  <form action="/" method="POST">
+    {{ template_form.csrt_token }}
+    {{ template_form.date.label }} {{template_form.date(class='datepicker')}} {{template_form.hidden_tag()}}
+
+
+    {{ template_form.hidden_tag() }}
+    <p>{{ template_form.recipe.label }}
+    {{ template_form.recipe() }}</p>
+    <tr>{% for btn in template_form.recipe_type %}
+      <td>{{ btn }}</td>
+      <td>{{ btn.label }}</td>
+    {% endfor %}</tr>
+    <p>{{ template_form.description.label }}
+    {{ template_form.description() }}</p>
+    <p>{{ template_form.ingredients.label }}
+    {{ template_form.ingredients() }}</p>
+
+    <p>{{ template_form.submit() }}</p>
+  </form>
+
+{% endblock %}
