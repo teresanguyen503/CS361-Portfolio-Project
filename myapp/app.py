@@ -2,14 +2,34 @@ from flask import Flask, render_template, request, session
 from helper import recipes, types, descriptions, ingredients, instructions, add_ingredients, add_instructions, comments
 from forms import RecipeForm, CommentForm
 from wtforms.fields.html5 import DateField
+import requests
+import json
+from operator import itemgetter 
 
 
-app = Flask(__name__)
+url_endpoint = "https://www.indexofsciences.com/index.php/wp-json/wp/v2/posts" 
+response = requests.get(url_endpoint)
+json_result = json.loads(response.content)
+print("-------------------------------------------")
+# for links in range(len(json_result)):
+#   print(json_result[links]['link'])
+
+
+
+app = Flask(__name__, static_folder='myapp/static')
 app.config["SECRET_KEY"] = "mysecret"
+
 
 @app.route("/", methods=["GET", "POST"])
 def index(): 
   return render_template("index.html")
+
+@app.route("/nutritionalNews", methods=["GET"])
+def nutritionalNews():
+  links_list = []
+  for links in range(len(json_result)):
+    links_list.append(json_result[links]["link"])
+  return render_template("news.html", article_lists=links_list)
 
 @app.route("/mealEntry", methods=["GET", "POST"])
 def mealEntry():
@@ -35,3 +55,6 @@ def recipe(id):
     new_comment = comment_form.comment.data
     comments[id].append(new_comment)
   return render_template("recipe.html", template_recipe=recipes[id], template_type=types[id], template_description=descriptions[id], template_ingredients=ingredients[id], template_instructions=instructions[id], template_comments=comments[id], template_form=comment_form)
+
+if __name__ == "__main__": 
+  app.run(debug=True)
