@@ -5,11 +5,14 @@
 <div class="outsideScroll">
     <div class="scroll">
         <ul style="list-style-type:none;">
-            {% for article in article_lists %}
-            <li><a href="{{  article  }}" style=""></a>
+            {% for title, article in title_link_list %}
+            <li><a href="{{  article  }}" target="_blank">{{  title  }}</a>
                 <iframe class="box" src=" {{  article }} " width="1000px" height="250px">
                 </iframe>
             </li>
+            <br>
+            <br>
+            <br>
             {% endfor %}
         </ul>
     </div>

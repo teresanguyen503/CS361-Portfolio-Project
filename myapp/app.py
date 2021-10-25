@@ -13,6 +13,13 @@ json_result = json.loads(response.content)
 print("-------------------------------------------")
 # for links in range(len(json_result)):
 #   print(json_result[links]['link'])
+title_list = []
+links_list = []
+for lists in range(len(json_result)):
+  title_list.append(json_result[lists]["yoast_head_json"]["title"])
+  links_list.append(json_result[lists]["link"])
+title_link_list = zip(title_list, links_list)
+print(title_list)
 
 
 
@@ -26,10 +33,13 @@ def index():
 
 @app.route("/nutritionalNews", methods=["GET"])
 def nutritionalNews():
+  title_list = []
   links_list = []
-  for links in range(len(json_result)):
-    links_list.append(json_result[links]["link"])
-  return render_template("news.html", article_lists=links_list)
+  for lists in range(len(json_result)):
+    title_list.append(json_result[lists]["yoast_head_json"]["title"])
+    links_list.append(json_result[lists]["link"])
+  title_link_list = zip(title_list, links_list)
+  return render_template("news.html", title_link_list=title_link_list, article_title=title_list, article_lists=links_list)
 
 @app.route("/mealEntry", methods=["GET", "POST"])
 def mealEntry():
