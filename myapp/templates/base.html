@@ -4,9 +4,49 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" type="text/css" href="{{  url_for('static', filename='css/styles.css')  }}">
+    <link href="{{  url_for('static', filename='style/styles.css')  }}" rel="stylesheet" type="text/css" >
+    <style type="text/css">
+        body {
+            background-color: rgb(0, 34, 60);
+        }
+
+        .center {
+            display: flex;
+            align-items: center; 
+            height: 500px; 
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .button {
+            background-color: rosybrown;
+            border: none;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            border-radius: 50%;
+        }
+
+        a {
+            color: white;
+        }
+    </style>
 </head>
 <body>
+    <div>
+        <a href="{{  url_for('index')  }}"> Home </a> |
+        <a href="{{  url_for('mealEntry')  }}"> Meal Entry </a> |
+        <a href="{{  url_for('recipe', id='0')  }}"> Food Diaries </a> |
+        <a href="{{  url_for('nutritionalNews')  }}"> Nutritional News </a> 
+        <span style="color: white; padding-left: 850px;">Profile</span>
+    </div>
+    <div>
+        
+    </div>
     {% block content %}
     {% endblock %}
 </body>

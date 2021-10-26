@@ -1,12 +1,12 @@
 {% extends "base.html" %}
 {% block content %}
 
-<h3>Articles to check out: </h3>
+<h3 style="color: white;">Articles to check out: </h3>
 <div class="outsideScroll">
     <div class="scroll">
         <ul style="list-style-type:none;">
             {% for title, article in title_link_list %}
-            <li><a href="{{  article  }}" target="_blank">{{  title  }}</a>
+            <li><a href="{{  article  }}" target="_blank" style="color: rosybrown;">{{  title  }}</a>
                 <iframe class="box" src=" {{  article }} " width="1000px" height="250px">
                 </iframe>
             </li>

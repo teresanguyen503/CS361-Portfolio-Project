@@ -1,22 +1,26 @@
 {% extends "base.html" %}
 {% block content %}
 
-<h1>WELCOME!</h1>
+<h1 style="color: white;">WELCOME!</h1>
 
-<button type="button" name="MealEntry" class="mainButtons">
-    Meal Entry 
-</button>
+<div class="container">
+    <div class="center">
+        <button class="button" type="button" name="MealEntry" class="mainButtons">
+            Meal Entry 
+        </button>
 
-<br>
+        <br>
 
-<button type="button" name="FoodDiaries" class="mainButtons">
-    Food Diaries 
-</button>
+        <button class="button" type="button" name="FoodDiaries" class="mainButtons">
+            Food Diaries 
+        </button>
 
-<br>
+        <br>
 
-<button type="button" name="NutritionalNews" class="mainButtons" onclick="location.href='/nutritionalNews'">
-    Nutritional News
-</button>
+        <button class="button" type="button" name="NutritionalNews" class="mainButtons" onclick="location.href='/nutritionalNews'">
+            Nutritional News
+        </button>
+    </div>
+</div>
 
 {% endblock %}
