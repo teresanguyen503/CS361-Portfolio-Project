@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
-<h1>My Food Diary</h1>
-<p>Here is what I ate on the following days.</p>
+<h1 style="color: rosybrown;">My Food Diary</h1>
+<p style="color: rosybrown;">Here is what I ate on the following days.</p>
 {% for id, name in template_recipes.items() %}
   <p><a href="{{ url_for('recipe', id=id) }}">{{ name }}</a></p>
 {% endfor %}
