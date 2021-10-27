@@ -60,6 +60,8 @@ def mealEntry():
 
 @app.route("/recipe", methods=["GET", "POST"])
 def recipe_dates():
+  
+
   return render_template("dates.html")
 
 @app.route("/recipe/<int:id>", methods=["GET", "POST"])
@@ -72,6 +74,10 @@ def recipe(id):
 
 @app.route("/profile", methods=["GET", "POST"])
 def profile():
+  # profile_form = ProfileForm(csrf_enabled=False)
+  # if profile_form.validate_on_submit(): 
+  #   profile_info["name"] = profile_form.name.data
+  #   profile_info["DOB"] = profile_form.date.data
   return render_template("profile.html")
 
 
