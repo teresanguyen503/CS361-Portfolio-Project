@@ -66,5 +66,10 @@ def recipe(id):
     comments[id].append(new_comment)
   return render_template("recipe.html", template_recipe=recipes[id], template_type=types[id], template_description=descriptions[id], template_ingredients=ingredients[id], template_instructions=instructions[id], template_comments=comments[id], template_form=comment_form)
 
+@app.route("/profile", methods=["GET", "POST"])
+def profile():
+  return render_template("profile.html")
+
+
 if __name__ == "__main__": 
   app.run(debug=True)
