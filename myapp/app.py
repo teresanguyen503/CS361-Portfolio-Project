@@ -13,13 +13,13 @@ json_result = json.loads(response.content)
 print("-------------------------------------------")
 # for links in range(len(json_result)):
 #   print(json_result[links]['link'])
-title_list = []
-links_list = []
-for lists in range(len(json_result)):
-  title_list.append(json_result[lists]["yoast_head_json"]["title"])
-  links_list.append(json_result[lists]["link"])
-title_link_list = zip(title_list, links_list)
-print(title_list)
+# title_list = []
+# links_list = []
+# for lists in range(len(json_result)):
+#   title_list.append(json_result[lists]["yoast_head_json"]["title"])
+#   links_list.append(json_result[lists]["link"])
+# title_link_list = zip(title_list, links_list)
+# print(title_list)
 
 
 
@@ -57,6 +57,10 @@ def mealEntry():
     
     comments[new_id] = []
   return render_template("mealEntry.html", template_recipes=recipes, template_form=recipe_form)
+
+@app.route("/recipe", methods=["GET", "POST"])
+def recipe_dates():
+  return render_template("dates.html")
 
 @app.route("/recipe/<int:id>", methods=["GET", "POST"])
 def recipe(id):

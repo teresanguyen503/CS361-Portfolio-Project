@@ -17,7 +17,8 @@
     <tr>{% for btn in template_form.recipe_type %}
       <td>{{ btn }}</td>
       <td>{{ btn.label }}</td>
-    {% endfor %}</tr>
+      {% endfor %}
+    </tr>
     <p>{{ template_form.description.label }}
     {{ template_form.description() }}</p>
     <p>{{ template_form.ingredients.label }}
