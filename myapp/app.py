@@ -58,11 +58,11 @@ def mealEntry():
     comments[new_id] = []
   return render_template("mealEntry.html", template_recipes=recipes, template_form=recipe_form)
 
-@app.route("/recipe", methods=["GET", "POST"])
-def recipe_dates():
+@app.route("/recipeDates", methods=["GET", "POST"])
+def recipeDates():
   
 
-  return render_template("dates.html")
+  return render_template("dates.html", template_recipes=recipes)
 
 @app.route("/recipe/<int:id>", methods=["GET", "POST"])
 def recipe(id):
@@ -75,9 +75,17 @@ def recipe(id):
 @app.route("/profile", methods=["GET", "POST"])
 def profile():
   # profile_form = ProfileForm(csrf_enabled=False)
-  # if profile_form.validate_on_submit(): 
-  #   profile_info["name"] = profile_form.name.data
-  #   profile_info["DOB"] = profile_form.date.data
+  # if profile_form.validate_on_submit():
+    
+  #   name = profile_form.name.data
+  #   date_of_birth = profile_form.date_of_birth.data
+  #   weight = profile_form.weight.data
+  #   height = profile_form.height.data
+
+   
+  #   add_profile(name, date_of_birth, weight, height)
+    
+
   return render_template("profile.html")
 
 
