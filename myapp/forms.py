@@ -4,8 +4,9 @@ from wtforms.validators import DataRequired
 from wtforms.fields.html5 import DateField
 
 
+
 class RecipeForm(FlaskForm):
-  date = DateField('Date', format='%Y-%m-%d', validators=(validators.DataRequired(),))
+  date = DateField('Date', format='%Y-%m-%d', validators=[DataRequired()])
 
   recipe_categories = [("Breakfast","Breakfast"), ("Lunch","Lunch"), ("Dinner","Dinner"), ("Snack", "Snack")]
   recipe =  StringField("Meal", validators=[DataRequired()])

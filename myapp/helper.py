@@ -1,4 +1,5 @@
-recipes = {1: "10/27/2021", 2: "10/26/2021"}
+dates = {1: "10/30/2021", 2: "10/31/2021"}
+recipes = {1: "Eggs", 2: "Toast"}
 types = {1: "Breakfast", 2: "Breakfast"}
 descriptions = {1: "Egg fried in butter", 2: "Toasted bread spread with butter"}
 ingredients = {1: ["1 pad of butter", "1 Egg", "A pinch of salt"], 2: ["1 pad of salted butter", "1 slice of bread"]}
