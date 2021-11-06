@@ -7,13 +7,12 @@ from wtforms.fields.html5 import DateField
 
 class RecipeForm(FlaskForm):
   date = DateField('Date', format='%Y-%m-%d', validators=[DataRequired()])
-
   recipe_categories = [("Breakfast","Breakfast"), ("Lunch","Lunch"), ("Dinner","Dinner"), ("Snack", "Snack")]
   recipe =  StringField("Meal", validators=[DataRequired()])
   recipe_type = RadioField("Type", choices=recipe_categories)
   description = StringField("Description", validators=[DataRequired()])
   ingredients = TextAreaField("Ingredients", validators=[DataRequired()])
-  submit = SubmitField("Add Recipe")
+  submit = SubmitField("Add Meal")
 
 class CommentForm(FlaskForm):
   comment =  StringField("Comment", validators=[DataRequired()])

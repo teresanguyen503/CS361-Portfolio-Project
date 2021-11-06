@@ -86,3 +86,7 @@ a {
 .mealsEntered {
     color: rosybrown;
 }
+
+.warning {
+    color: red;
+}

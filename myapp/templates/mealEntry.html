@@ -22,6 +22,8 @@
     <p>{{ template_form.ingredients.label }}
     {{ template_form.ingredients() }}</p>
 
+    <p class="warning">PLEASE double check your entry.  Make sure EVERYTHING is correct before you add a meal.</p>
+
     <p>{{ template_form.submit() }}</p>
 
     {% with messages = get_flashed_messages() %}
@@ -30,7 +32,8 @@
           <p style="color: white;">{{  message  }}</p>
         {% endfor %}
       {% endif %}
-    {% endwith %}
+    {% endwith %} 
+
 
   </form>
 

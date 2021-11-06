@@ -25,19 +25,20 @@ def index():
 @app.route("/mealEntry", methods=["GET", "POST"])
 def mealEntry():
   recipe_form = RecipeForm(csrf=False)
-  if recipe_form.validate_on_submit and request.method == "POST":
-      new_id = len(recipes)+1
-      dates[new_id] = recipe_form.date.data
-      recipes[new_id] = recipe_form.recipe.data
-      types[new_id] = recipe_form.recipe_type.data
-      descriptions[new_id] = recipe_form.description.data
-      new_ingredients = recipe_form.ingredients.data
+  if recipe_form.validate_on_submit and request.method == "POST": 
+    new_id = len(recipes)+1
+    dates[new_id] = recipe_form.date.data
+    recipes[new_id] = recipe_form.recipe.data
+    types[new_id] = recipe_form.recipe_type.data
+    descriptions[new_id] = recipe_form.description.data
+    new_ingredients = recipe_form.ingredients.data
+  
+    add_ingredients(new_id, new_ingredients)
     
-      add_ingredients(new_id, new_ingredients)
-      
-      comments[new_id] = []
-      flash("You just added to your food diary!")
-      return redirect(url_for("mealEntry"))
+    comments[new_id] = []
+    flash("You just added to your food diary!", "submit")
+    return redirect(url_for("mealEntry"))
+
   return render_template("mealEntry.html", template_form=recipe_form)
 
 @app.route("/recipeDates", methods=["GET", "POST"])
@@ -57,8 +58,19 @@ def recipe(id):
   if comment_form.validate_on_submit():
     new_comment = comment_form.comment.data
     comments[id].append(new_comment)
+
   return render_template("recipe.html", template_recipe=recipes[id], template_type=types[id], template_description=descriptions[id], template_ingredients=ingredients[id], template_comments=comments[id], template_form=comment_form)
-  # template_instructions=instructions[id]
+
+@app.route("/nutritionalNews", methods=["GET"])
+def nutritionalNews():
+  title_list = []
+  links_list = []
+  for lists in range(len(json_result)):
+    title_list.append(json_result[lists]["yoast_head_json"]["title"])
+    links_list.append(json_result[lists]["link"])
+  title_link_list = zip(title_list, links_list)
+
+  return render_template("news.html", title_link_list=title_link_list, article_title=title_list, article_lists=links_list)
 
 @app.route("/profile", methods=["GET", "POST"])
 def profile():
@@ -75,17 +87,6 @@ def profile():
     
 
   return render_template("profile.html")
-
-@app.route("/nutritionalNews", methods=["GET"])
-def nutritionalNews():
-  title_list = []
-  links_list = []
-  for lists in range(len(json_result)):
-    title_list.append(json_result[lists]["yoast_head_json"]["title"])
-    links_list.append(json_result[lists]["link"])
-  title_link_list = zip(title_list, links_list)
-
-  return render_template("news.html", title_link_list=title_link_list, article_title=title_list, article_lists=links_list)
 
 
 

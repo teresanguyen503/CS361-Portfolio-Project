@@ -10,7 +10,7 @@
     <p>A {{ template_recipe }} recipe.</p>
   {% endif %}
   
-  <h3>Ingredients - {{ template_ingredients | length}}</h3>
+  <h3>Ingredients</h3>
   <ul>{% for ingredient in template_ingredients %}
     <li>{{ ingredient }}</li>
   {% endfor %}</ul>
@@ -26,8 +26,6 @@
     {{ template_form.comment(size=48) }}</p>
     <p>{{ template_form.submit() }}</p>
   </form>
-
-  <button>Edit/Delete</button>
 
 </div>
 {% endblock %}
