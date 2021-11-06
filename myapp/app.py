@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, session 
+from flask import Flask, render_template, request, session, redirect, url_for, flash
 from helper import dates, recipes, types, descriptions, ingredients, instructions, add_ingredients, add_instructions, comments
 from forms import RecipeForm, CommentForm
 from wtforms.fields.html5 import DateField
@@ -8,7 +8,7 @@ from operator import itemgetter
 
 
 
-url_endpoint = "https://www.indexofsciences.com/index.php/wp-json/wp/v2/posts" 
+url_endpoint = "https://www.indexofsciences.com/index.php/wp-json/wp/v2/posts"
 response = requests.get(url_endpoint)
 json_result = json.loads(response.content)
 
@@ -36,6 +36,8 @@ def mealEntry():
       add_ingredients(new_id, new_ingredients)
       
       comments[new_id] = []
+      flash("You just added to your food diary!")
+      return redirect(url_for("mealEntry"))
   return render_template("mealEntry.html", template_form=recipe_form)
 
 @app.route("/recipeDates", methods=["GET", "POST"])
@@ -74,9 +76,10 @@ def nutritionalNews():
     title_list.append(json_result[lists]["yoast_head_json"]["title"])
     links_list.append(json_result[lists]["link"])
   title_link_list = zip(title_list, links_list)
+
   return render_template("news.html", title_link_list=title_link_list, article_title=title_list, article_lists=links_list)
 
 
 
 if __name__ == "__main__": 
-  app.run(debug=True)
+  app.run(debug=True, port=5000)
