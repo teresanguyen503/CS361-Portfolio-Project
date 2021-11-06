@@ -13,7 +13,7 @@ response = requests.get(url_endpoint)
 json_result = json.loads(response.content)
 
 
-app = Flask(__name__, static_folder='myapp/static')
+app = Flask(__name__)
 app.config["SECRET_KEY"] = "mysecret"
 
 
@@ -47,7 +47,7 @@ def recipeDates():
 
   for i in sorted_dates: 
     sorted_dict[i] = dates[i]
-    
+
   return render_template("dates.html", template_recipes=sorted_dict)
 
 

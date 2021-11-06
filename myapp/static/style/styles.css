@@ -18,3 +18,71 @@ a:hover + .box,.box:hover{
 }
 
 
+body {
+    background-color: rgb(0, 34, 60);
+}
+
+.center {
+    display: flex;
+    align-items: center; 
+    height: 500px; 
+    flex-direction: column;
+    justify-content: center;
+}
+
+.button {
+    background-color: rosybrown;
+    border: 2px solid black;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    border-radius: 12px;
+}
+
+.button:hover {
+    background-color: black;
+}
+
+a {
+    color: white;
+}
+
+.navBar {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: black;
+}
+
+.navList {
+    float: left;
+}
+
+.navLink {
+    display: block; 
+    padding: 14px 16px;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+}
+
+.navList a:hover {
+    background-color: rosybrown;
+}
+
+.profile label {
+    color: rosybrown;
+}
+
+.meals label {
+    color: rosybrown;
+}
+
+.mealsEntered {
+    color: rosybrown;
+}
