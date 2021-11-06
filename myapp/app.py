@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, session, redirect, url_for, flash
-from helper import dates, recipes, types, descriptions, ingredients, instructions, add_ingredients, add_instructions, comments
+from helper import dates, recipes, types, descriptions, ingredients, add_ingredients, add_instructions, comments
 from forms import RecipeForm, CommentForm
 from wtforms.fields.html5 import DateField
 import requests
@@ -42,7 +42,10 @@ def mealEntry():
 
 @app.route("/recipeDates", methods=["GET", "POST"])
 def recipeDates():
+  # all_data = zip(dates, recipes, types, descriptions, ingredients, comments, instructions)
+  # sort_data = sort_data(all_data)
   return render_template("dates.html", template_recipes=dates)
+  # template_rececipes = dates
 
 @app.route("/recipe/<int:id>", methods=["GET", "POST"])
 def recipe(id):
@@ -50,7 +53,8 @@ def recipe(id):
   if comment_form.validate_on_submit():
     new_comment = comment_form.comment.data
     comments[id].append(new_comment)
-  return render_template("recipe.html", template_recipe=recipes[id], template_type=types[id], template_description=descriptions[id], template_ingredients=ingredients[id], template_instructions=instructions[id], template_comments=comments[id], template_form=comment_form)
+  return render_template("recipe.html", template_recipe=recipes[id], template_type=types[id], template_description=descriptions[id], template_ingredients=ingredients[id], template_comments=comments[id], template_form=comment_form)
+  # template_instructions=instructions[id]
 
 @app.route("/profile", methods=["GET", "POST"])
 def profile():
