@@ -42,10 +42,14 @@ def mealEntry():
 
 @app.route("/recipeDates", methods=["GET", "POST"])
 def recipeDates():
-  # all_data = zip(dates, recipes, types, descriptions, ingredients, comments, instructions)
-  # sort_data = sort_data(all_data)
-  return render_template("dates.html", template_recipes=dates)
-  # template_rececipes = dates
+  sorted_dates = sorted(dates, key=dates.get, reverse=True)
+  sorted_dict = {}
+
+  for i in sorted_dates: 
+    sorted_dict[i] = dates[i]
+    
+  return render_template("dates.html", template_recipes=sorted_dict)
+
 
 @app.route("/recipe/<int:id>", methods=["GET", "POST"])
 def recipe(id):
