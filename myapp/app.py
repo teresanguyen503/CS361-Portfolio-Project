@@ -7,10 +7,10 @@ import json
 from operator import itemgetter 
 
 
-
-url_endpoint = "http://127.0.0.1:8000/articles"
-response = requests.get(url_endpoint)
-json_result = json.loads(response.content)
+def getData():
+  url_endpoint = "http://127.0.0.1:8000/articles"
+  response = requests.get(url_endpoint)
+  return json.loads(response.content)
 
 
 app = Flask(__name__)
@@ -63,6 +63,8 @@ def mealDisplay(id):
 
 @app.route("/nutritionalNews", methods=["GET"])
 def nutritionalNews():
+  json_result = getData()
+
   title_list = []
   links_list = []
   description_list = []
