@@ -65,10 +65,14 @@ def recipe(id):
 def nutritionalNews():
   title_list = []
   links_list = []
+  description_list = []
+  image_list = []
   for lists in json_result["articles"]:
     title_list.append(lists["title"])
     links_list.append(lists["link"])
-  title_link_list = zip(title_list, links_list)
+    description_list.append(lists["description"])
+    image_list.append(lists["img_src"])
+  title_link_list = zip(title_list, links_list, description_list, image_list)
 
   return render_template("news.html", title_link_list=title_link_list, article_title=title_list, article_lists=links_list)
 
