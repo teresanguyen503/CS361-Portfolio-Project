@@ -53,13 +53,13 @@ def recipeDates():
 
 
 @app.route("/recipe/<int:id>", methods=["GET", "POST"])
-def recipe(id):
+def mealDisplay(id):
   comment_form = CommentForm(csrf=False)
   if comment_form.validate_on_submit():
     new_comment = comment_form.comment.data
     comments[id].append(new_comment)
 
-  return render_template("recipe.html", template_recipe=recipes[id], template_type=types[id], template_description=descriptions[id], template_ingredients=ingredients[id], template_comments=comments[id], template_form=comment_form)
+  return render_template("mealDisplay.html", template_recipe=recipes[id], template_type=types[id], template_description=descriptions[id], template_ingredients=ingredients[id], template_comments=comments[id], template_form=comment_form)
 
 @app.route("/nutritionalNews", methods=["GET"])
 def nutritionalNews():
@@ -75,23 +75,7 @@ def nutritionalNews():
   title_link_list = zip(title_list, links_list, description_list, image_list)
 
   return render_template("news.html", title_link_list=title_link_list, article_title=title_list, article_lists=links_list)
-
-@app.route("/profile", methods=["GET", "POST"])
-def profile():
-  # profile_form = ProfileForm(csrf_enabled=False)
-  # if profile_form.validate_on_submit():
     
-  #   name = profile_form.name.data
-  #   date_of_birth = profile_form.date_of_birth.data
-  #   weight = profile_form.weight.data
-  #   height = profile_form.height.data
-
-   
-  #   add_profile(name, date_of_birth, weight, height)
-    
-
-  return render_template("profile.html")
-
 
 
 if __name__ == "__main__": 

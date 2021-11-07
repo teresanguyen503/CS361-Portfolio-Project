@@ -18,10 +18,3 @@ class CommentForm(FlaskForm):
   comment =  StringField("Comment", validators=[DataRequired()])
   submit = SubmitField("Add Comment")
 
-
-class ProfileForm(FlaskForm):
-  name = StringField("Name", validators=[DataRequired()])
-  date_of_birth = DateField("Date of Birth", format='%Y-%m-%d', validators=(validators.DataRequired(),))
-  weight = StringField("Weight (lbs)", validators=[DataRequired()])
-  height = StringField("Height (in)", validators=[DataRequired()])
-  submit = SubmitField("Save")
