@@ -8,7 +8,7 @@ from operator import itemgetter
 
 
 
-url_endpoint = "https://www.indexofsciences.com/index.php/wp-json/wp/v2/posts"
+url_endpoint = "http://127.0.0.1:8000/articles"
 response = requests.get(url_endpoint)
 json_result = json.loads(response.content)
 
@@ -65,9 +65,9 @@ def recipe(id):
 def nutritionalNews():
   title_list = []
   links_list = []
-  for lists in range(len(json_result)):
-    title_list.append(json_result[lists]["yoast_head_json"]["title"])
-    links_list.append(json_result[lists]["link"])
+  for lists in json_result["articles"]:
+    title_list.append(lists["title"])
+    links_list.append(lists["link"])
   title_link_list = zip(title_list, links_list)
 
   return render_template("news.html", title_link_list=title_link_list, article_title=title_list, article_lists=links_list)
