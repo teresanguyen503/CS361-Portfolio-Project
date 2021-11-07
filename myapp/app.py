@@ -41,8 +41,8 @@ def mealEntry():
 
   return render_template("mealEntry.html", template_form=recipe_form)
 
-@app.route("/recipeDates", methods=["GET", "POST"])
-def recipeDates():
+@app.route("/mealDates", methods=["GET", "POST"])
+def mealDates():
   sorted_dates = sorted(dates, key=dates.get, reverse=True)
   sorted_dict = {}
 
@@ -52,7 +52,7 @@ def recipeDates():
   return render_template("dates.html", template_recipes=sorted_dict)
 
 
-@app.route("/recipe/<int:id>", methods=["GET", "POST"])
+@app.route("/meal/<int:id>", methods=["GET", "POST"])
 def mealDisplay(id):
   comment_form = CommentForm(csrf=False)
   if comment_form.validate_on_submit():
