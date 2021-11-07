@@ -10,9 +10,9 @@
 
 
     {{ template_form.hidden_tag() }}
-    <p>{{ template_form.recipe.label }}
-    {{ template_form.recipe() }}</p>
-    <tr>{% for btn in template_form.recipe_type %}
+    <p>{{ template_form.meal.label }}
+    {{ template_form.meal() }}</p>
+    <tr>{% for btn in template_form.meal_type %}
       <td>{{ btn }}</td>
       <td>{{ btn.label }}</td>
       {% endfor %}

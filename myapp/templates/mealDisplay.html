@@ -2,12 +2,12 @@
 {% block content %}
 
 <div class="mealsEntered">
-  <h1>{{ template_recipe | title }}</h1>
+  <h1>{{ template_meal | title }}</h1>
   <h4>{{ template_type }}</h4>
   {% if template_description %}
     <p>{{ template_description }}</p>
   {%else%}
-    <p>A {{ template_recipe }} recipe.</p>
+    <p>A {{ template_meal }} recipe.</p>
   {% endif %}
   
   <h3>Ingredients</h3>

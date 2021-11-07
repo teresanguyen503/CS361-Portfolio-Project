@@ -5,7 +5,7 @@
 <div class="outsideScroll">
     <div class="scroll">
         <ul style="list-style-type:none;">
-            {% for title, article, description, image in title_link_list %}
+            {% for title, article, description, image in data_list %}
             <li><a href="{{  article  }}" target="_blank" style="color: rosybrown;">{{  title  }}</a>
                 <p style="color: white;">{{ description }}</p>
                 <img src="{{ image }}" alt="{{ description }}" width="500" height="400">
