@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, session, redirect, url_for, flash
 from helper import dates, meals, types, descriptions, ingredients, add_ingredients, comments
-from forms import MealForm, CommentForm
+from forms import MealForm, CommentForm, DeleteForm
 from wtforms.fields.html5 import DateField
 import requests
 import json
@@ -59,7 +59,20 @@ def mealDisplay(id):
     new_comment = comment_form.comment.data
     comments[id].append(new_comment)
 
-  return render_template("mealDisplay.html", template_meals=meals[id], template_type=types[id], template_description=descriptions[id], template_ingredients=ingredients[id], template_comments=comments[id], template_form=comment_form)
+  delete_form = DeleteForm(csrf=False)
+  if delete_form.validate_on_submit(): 
+    print(dates)
+    dates.pop(id)
+    print(dates)
+    meals.pop(id)
+    types.pop(id)
+    descriptions.pop(id)
+    ingredients.pop(id)
+    comments.pop(id)
+    return redirect(url_for("mealDates"))
+
+
+  return render_template("mealDisplay.html", template_meals=meals[id], template_type=types[id], template_description=descriptions[id], template_ingredients=ingredients[id], template_comments=comments[id], template_form=comment_form, template_delete=delete_form)
 
 @app.route("/nutritionalNews", methods=["GET"])
 def nutritionalNews():

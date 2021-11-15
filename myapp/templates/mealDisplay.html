@@ -31,5 +31,10 @@
     <p>{{ template_form.submit() }}</p>
   </form>
 
+  <form method="POST">
+    {{ template_delete.hidden_tag() }}
+    <p>{{ template_delete.submit() }}</p>
+  </form>
+
 </div>
 {% endblock %}

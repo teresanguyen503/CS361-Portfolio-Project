@@ -18,3 +18,5 @@ class CommentForm(FlaskForm):
   comment =  StringField("Comment", validators=[DataRequired()])
   submit = SubmitField("Add Comment")
 
+class DeleteForm(FlaskForm): 
+  submit = SubmitField("Delete Entry")
