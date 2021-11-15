@@ -55,15 +55,13 @@ def mealDates():
 @app.route("/meal/<int:id>", methods=["GET", "POST"])
 def mealDisplay(id):
   comment_form = CommentForm(csrf=False)
-  if comment_form.validate_on_submit():
+  if comment_form.validate():
     new_comment = comment_form.comment.data
     comments[id].append(new_comment)
 
   delete_form = DeleteForm(csrf=False)
-  if delete_form.validate_on_submit(): 
-    print(dates)
+  if bool(delete_form.confirm_category.data) and delete_form.validate(): 
     dates.pop(id)
-    print(dates)
     meals.pop(id)
     types.pop(id)
     descriptions.pop(id)

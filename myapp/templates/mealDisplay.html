@@ -24,16 +24,22 @@
   <br>
   <br>
 
-  <form method="POST">
+  <form id="comment-form" method="POST">
     {{ template_form.hidden_tag() }}
     <p>{{ template_form.comment.label }}
     {{ template_form.comment(size=48) }}</p>
     <p>{{ template_form.submit() }}</p>
   </form>
 
-  <form method="POST">
+  <form id="delete-form" method="POST">
     {{ template_delete.hidden_tag() }}
-    <p>{{ template_delete.submit() }}</p>
+    <p>{{ template_delete.confirm_string.label }}</p>
+    <tr>{% for btn in template_delete.confirm_category %}
+      <td>{{ btn }}</td>
+      <td>{{ btn.label }}</td>
+      {% endfor %}
+    </tr>
+    <p>{{ template_delete.delete_submit() }}</p>
   </form>
 
 </div>

@@ -19,4 +19,6 @@ class CommentForm(FlaskForm):
   submit = SubmitField("Add Comment")
 
 class DeleteForm(FlaskForm): 
-  submit = SubmitField("Delete Entry")
+  confirm_string = StringField("Do you want to delete this entry?")
+  confirm_category = RadioField("Select", coerce=bool, choices=[(True, "Yes")])
+  delete_submit = SubmitField("Delete Entry")
