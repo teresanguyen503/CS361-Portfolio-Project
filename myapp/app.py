@@ -7,7 +7,7 @@ import json
 from operator import itemgetter 
 
 
-def getData():
+def getWebScraperData():
   url_endpoint = "http://127.0.0.1:8000/articles"
   response = requests.get(url_endpoint)
   return json.loads(response.content)
@@ -74,7 +74,7 @@ def mealDisplay(id):
 
 @app.route("/nutritionalNews", methods=["GET"])
 def nutritionalNews():
-  json_result = getData()
+  json_result = getWebScraperData()
 
   title_list = []
   links_list = []
