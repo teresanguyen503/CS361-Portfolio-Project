@@ -27,6 +27,13 @@ def mealEntry():
   meal_form = MealForm(csrf=False)
   if meal_form.validate_on_submit and request.method == "POST": 
     new_id = len(meals)+1
+    meal_entry_helper_function(new_id, meal_form)
+    flash("You just added to your food diary!", "submit")
+    return redirect(url_for("mealEntry"))
+
+  return render_template("mealEntry.html", template_form=meal_form)
+
+def meal_entry_helper_function(new_id, meal_form): 
     dates[new_id] = meal_form.date.data
     meals[new_id] = meal_form.meal.data
     types[new_id] = meal_form.meal_type.data
@@ -36,10 +43,7 @@ def mealEntry():
     add_ingredients(new_id, new_ingredients)
     
     comments[new_id] = []
-    flash("You just added to your food diary!", "submit")
-    return redirect(url_for("mealEntry"))
-
-  return render_template("mealEntry.html", template_form=meal_form)
+    return
 
 @app.route("/mealDates", methods=["GET", "POST"])
 def mealDates():
