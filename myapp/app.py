@@ -68,7 +68,9 @@ def mealDisplay(id):
     meal_delete_dislpay_helper_function(id, delete_form)
     return redirect(url_for("mealDates"))
 
-  return render_template("mealDisplay.html", template_meals=meals[id], template_type=types[id], template_description=descriptions[id], template_ingredients=ingredients[id], template_comments=comments[id], template_form=comment_form, template_delete=delete_form)
+  return render_template("mealDisplay.html", template_meals=meals[id], template_type=types[id],
+    template_description=descriptions[id], template_ingredients=ingredients[id], template_comments=comments[id], 
+    template_form=comment_form, template_delete=delete_form)
 
 def meal_delete_dislpay_helper_function(id, delete_form): 
   dates.pop(id)
