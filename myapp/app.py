@@ -65,16 +65,19 @@ def mealDisplay(id):
 
   delete_form = DeleteForm(csrf=False)
   if bool(delete_form.confirm_category.data) and delete_form.validate(): 
-    dates.pop(id)
-    meals.pop(id)
-    types.pop(id)
-    descriptions.pop(id)
-    ingredients.pop(id)
-    comments.pop(id)
+    meal_delete_dislpay_helper_function(id, delete_form)
     return redirect(url_for("mealDates"))
 
-
   return render_template("mealDisplay.html", template_meals=meals[id], template_type=types[id], template_description=descriptions[id], template_ingredients=ingredients[id], template_comments=comments[id], template_form=comment_form, template_delete=delete_form)
+
+def meal_delete_dislpay_helper_function(id, delete_form): 
+  dates.pop(id)
+  meals.pop(id)
+  types.pop(id)
+  descriptions.pop(id)
+  ingredients.pop(id)
+  comments.pop(id)
+  return 
 
 @app.route("/nutritionalNews", methods=["GET"])
 def nutritionalNews():
